@@ -230,7 +230,7 @@ section:nth-of-type(even) .landing__container {
 
 /* ------------------------------------------------------- */
 /* 5.2) BACKGROUND CIRCLES Rule */
-/*      Note that background circles are created with psuedo elements before and after */
+/*      Note that background circles are created with pseudo elements before and after */
 /*      Circles appear to be random due to use of :nth-of-type psuedo class */
 /* ------------------------------------------------------- */
 section:nth-of-type(odd) .landing__container::before {
