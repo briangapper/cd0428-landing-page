@@ -1,36 +1,32 @@
 /*
- *
- * CSS written based on SMACSS architecture.
- * To learn more, visit: http://smacss.com/
- * 
- * For simplicity, no reset or normalize is added. 
- * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
- *
+CSS written based on SMACSS architecture.
+To learn more, visit: http://smacss.com/
+
+For simplicity, no reset or normalize is added. 
+To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
 */
 
-
-/* ---- Base Rules ---- */
+/* ******************************************************* */
+/* ------------------------------------------------------- */
+/* 1.) BODY General */
+/* ------------------------------------------------------- */
+/* ******************************************************* */
 body {
-    background: rgb(136,203,171);
     background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
     margin: 0;
     font-family: 'Merriweather', serif;
     color: #fff;
 }
 
-
-/* Typography General*/
+/* ******************************************************* */
+/* ------------------------------------------------------- */
+/* 2.) TYPOGRAPHY General */
+/* ------------------------------------------------------- */
+/* ******************************************************* */
 h1 {
     font-family: 'Fira Sans', sans-serif;
-    font-size: 3em;
+    font-size: 7em;
     margin: 2em 1rem;
-}
-
-@media only screen and (min-width: 35em){
-    h1 {
-        font-size: 7em;
-        margin: 2em 4rem 1em;
-    }
 }
 
 h2 {
@@ -45,50 +41,36 @@ p {
     color: #eee;
 }
 
-/* ---- Layout Rules ---- */
+/* ******************************************************* */
+/* ------------------------------------------------------- */
+/* 3.) LAYOUT General */
+/* ------------------------------------------------------- */
+/* ******************************************************* */
 main {
     margin: 10vh 1em 10vh;
 }
 
-.main-hero {
-    min-height: 40vh;
-    padding-top: 3em;
+.main__hero {
+    min-height: 20vh;
+    padding-top: 0;
 }
 
 section {
     position: relative;
-    min-height: 80vh;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s;
 }
 
+/* ******************************************************* */
+/* ------------------------------------------------------- */
+/* 4.) STYLES General */
+/* ------------------------------------------------------- */
+/* ******************************************************* */
 
-/* ---- Module Rules ---- */
-
-/* Navigation Styles*/
-.navbar__menu ul {
-    padding-left: 0;
-    margin: 0;
-    text-align: right;
-}
-
-.navbar__menu li {
-    display: inline-block;
-}
-
-.navbar__menu .menu__link {
-    display: block;
-    padding: 1em;
-    font-weight: bold;
-    text-decoration: none;
-    color: #000;
-}
-
-.navbar__menu .menu__link:hover {
-    background: #333;
-    color: #fff;
-    transition: ease 0.3s all;
-}
-
-/* Header Styles */
+/* ------------------------------------------------------- */
+/* 4.1) HEADER Style */
+/* ------------------------------------------------------- */
 .page__header {
     background: #fff;
     position: fixed;
@@ -97,22 +79,88 @@ section {
     z-index: 5;
 }
 
-/* Footer Styles */
-.page__footer {
-    background: #000;
-    padding: 3em;
-    color: #fff;
+/* ------------------------------------------------------- */
+/* 4.2) NAVBAR Style */
+/* ------------------------------------------------------- */
+ul {
+    padding-left: 0;
+    margin: 0;
+    text-align: right;
 }
 
-.page__footer p{
-    color: #fff;
-}
-
-
-/* ---- Theme Rules ---- */
-/* Landing Container Styles */
-.landing__container {
+li {
+    display: inline-block;
     padding: 1em;
+    font-weight: bold;
+}
+
+.menu__link a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* 4.2.1) Hovering nav items */
+.menu__link:hover {
+    background: #333;
+    transition: ease 0.3s all;
+}
+
+.menu__link a:hover {
+    color: #fff;
+}
+
+/* 4.2.2) class 'activ' nav items */
+.active {
+    background: #333;
+    transition: ease 0.3s all;
+}
+
+.active a {
+    color: #fff;
+}
+
+/* ------------------------------------------------------- */
+/* 4.3) COLLAPSIBLE Style */
+/* ------------------------------------------------------- */
+.collapsible_btn {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    margin-top: 1%;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+/* 4.3.1) Add different background color if class 'activ' or hovered */
+.active_coll,
+.collapsible_btn:hover {
+    background-color: grey;
+    color: #000;
+}
+
+/* 4.3.2) Add '+' symbol */
+.collapsible_btn::after {
+    content: '\002B';
+    float: right;
+    transform: scale(1.5);
+}
+
+/* 4.3.3) Add '-' symbol */
+.active_coll::after {
+    content: '\2212';
+}
+
+/* ------------------------------------------------------- */
+/* 4.4) LANDING CONTAINER Style */
+/* ------------------------------------------------------- */
+.landing__container {
+    padding: 0 1em 1em;
     text-align: left;
 }
 
@@ -123,15 +171,68 @@ section {
     }
 }
 
+/* ------------------------------------------------------- */
+/* 4.5) BUTTON Style (scroll-to-top) */
+/* ------------------------------------------------------- */
+
+/* 4.5.1) Style div */
+.scrollToTopDiv {
+    margin-top: 2vh;
+    height: 5vh;
+    width: 15vw;
+    float: right;
+    display: table;
+    z-index: 99;
+
+    border-radius: 10px;
+    background-color: grey;
+}
+
+/* 4.5.2) Style anchor */
+.scrollToTopDiv a {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+
+    font-weight: bold;
+    font-size: 1em;
+    color: #fff;
+}
+
+/* ------------------------------------------------------- */
+/* 4.6) FOOTER Style */
+/* ------------------------------------------------------- */
+.page__footer {
+    background: #000;
+    padding: 3em;
+    color: #fff;
+}
+
+.page__footer p{
+    color: #fff;
+}
+
+/* ******************************************************* */
+/* ------------------------------------------------------- */
+/* 5.) RULES General */
+/* ------------------------------------------------------- */
+/* ******************************************************* */
+
+/* ------------------------------------------------------- */
+/* 5.1) LANDING CONTAINER Rule */
+/* ------------------------------------------------------- */
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
     text-align: right; 
 }
 
-/* Background Circles */
-/* Note that background circles are created with psuedo elements before and after */
-/* Circles appear to be random due to use of :nth-of-type psuedo class */
+/* ------------------------------------------------------- */
+/* 5.2) BACKGROUND CIRCLES Rule */
+/*      Note that background circles are created with psuedo elements before and after */
+/*      Circles appear to be random due to use of :nth-of-type psuedo class */
+/* ------------------------------------------------------- */
 section:nth-of-type(odd) .landing__container::before {
     content: '';
     background: rgba(255, 255, 255, 0.187);
@@ -189,26 +290,40 @@ section:nth-of-type(3n + 1) .landing__container::after {
     transition: ease 0.5s all;
 }
 
+/* ******************************************************* */
+/* ------------------------------------------------------- */
+/* 6.) STATE RULES General */
+/* ------------------------------------------------------- */
+/* ******************************************************* */
 
-/* ---- Theme State Rules ---- */
-/* Section Active Styles */
-/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
-section.your-active-class {
-    background: rgb(0, 0, 0);
+/* ------------------------------------------------------- */
+/* 6.1) class 'active' section */
+/* ------------------------------------------------------- */
+section.active {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.your-active-class .landing__container::before {
+/* ------------------------------------------------------- */
+/* 6.2) add circle animation at the beginning of section */
+/* ------------------------------------------------------- */
+section.active .landing__container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-section.your-active-class .landing__container::after {
+/* ------------------------------------------------------- */
+/* 6.3) add circle animation at the end of section */
+/* ------------------------------------------------------- */
+section.active .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
 
-/* Section Active Styles Keyframe Animations */
+/* ******************************************************* */
+/* ------------------------------------------------------- */
+/* 7.) KEYFRAME Animations */
+/* ------------------------------------------------------- */
+/* ******************************************************* */
 @keyframes rotate {
 	from {
 		transform: rotate(0deg)

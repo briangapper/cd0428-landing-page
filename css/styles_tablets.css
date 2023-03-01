@@ -1,0 +1,12 @@
+/* Tablets */
+@media only screen and (min-width: 450px) and (max-width: 850px){
+    
+    h1 {
+        font-size: 5em;
+        margin: 2em 4rem 1em;
+    }
+    
+    li {
+        padding: 0.5em;
+    }
+}

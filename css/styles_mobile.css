@@ -1,0 +1,24 @@
+/* Mobile */
+@media only screen and (max-width: 450px){
+
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+    
+    li {
+        font-size: 0.75em;
+    }
+
+    .main__hero {
+        min-height: 12vh;
+    }
+
+    .scrollToTopDiv {
+        width: 20vw;
+    }
+
+}
